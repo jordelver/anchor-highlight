@@ -53,6 +53,7 @@
 
     var highlight = function() {
       addCssStyles();
+      removeExistingMarkers();
       addMarkers();
     };
 
