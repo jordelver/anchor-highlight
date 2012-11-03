@@ -8,3 +8,7 @@ Anchor Highlight is a bookmarklet to highlight all anchors on a page which only 
 
 This allows the full URL of the anchor to be easily copied and pasted. Think of the possibilities!
 
+## Screenshot
+
+![](https://github.com/jordelver/anchor-highlight/blob/master/screenshot.png)
+
