@@ -16,20 +16,19 @@ This allows the full URL of the anchor to be easily copied and pasted. Think of 
 
 Create a new bookmark on your bookmarks bar and change the URL to this
 
-    javascript:(function(){var%20e=function(){var%20e=window.location.href,t=function(){var%20e=document.querySelectorAll(%22a.marker%22);for(var%20t=0;t%3Ce.length;++t){var%20n=e[t];n.parentNode.removeChild(n)}},n=function(){var%20e=document.querySelectorAll(%22a[name]%22);for(var%20t=0;t%3Ce.length;++t){var%20n=e[t];if(n.href==%22%22){var%20r=s(n);n.parentNode.insertBefore(r,n.nextSibling)}}},r=function(e){return%22%23%22+e.name},i=function(t){return%20e+t},s=function(e){var%20t=r(e),n=document.createElement(%22a%22);return%20n.className=%22marker%22,n.innerHTML=r(e),n.href=i(t),n},o=function(){var%20e=%22a.marker{background:%20red;box-shadow:%200%202px%20%23cc0000;border-radius:%208px;padding:%204px%206px%202px%206px;margin-left:%203px;font-family:%20Helvetica,%20Arial,%20sans-serif;font-size:%2012px;color:%20%23FFF0F5;text-decoration:%20none;}%22,t=document.createElement(%22style%22);t.appendChild(document.createTextNode(e)),document.body.appendChild(t)},u=function(){o(),n()};return{highlight:u}}();e.highlight()})();
+    javascript:(function()%7Bvar%20e=function()%7Bvar%20e=window.location.href,t=function()%7Bvar%20e=document.querySelectorAll(%22a.marker%22);for(var%20t=0;t%3Ce.length;++t)%7Bvar%20n=e[t];n.parentNode.removeChild(n)%7D%7D,n=function()%7Bvar%20e=document.querySelectorAll(%22a[name]%22);for(var%20t=0;t%3Ce.length;++t)%7Bvar%20n=e[t];if(n.href==%22%22)%7Bvar%20r=s(n);n.parentNode.insertBefore(r,n.nextSibling)%7D%7D%7D,r=function(e)%7Breturn%22%23%22+e.name%7D,i=function(t)%7Breturn%20e+t%7D,s=function(e)%7Bvar%20t=r(e),n=document.createElement(%22a%22);return%20n.className=%22marker%22,n.innerHTML=r(e),n.href=i(t),n%7D,o=function()%7Bvar%20e=%22a.marker%7Bbackground:%20red;box-shadow:%200%202px%20%23cc0000;border-radius:%208px;padding:%204px%206px%202px%206px;margin-left:%203px;font-family:%20Helvetica,%20Arial,%20sans-serif;font-size:%2012px;color:%20%23FFF0F5;text-decoration:%20none;%7D%22,t=document.createElement(%22style%22);t.appendChild(document.createTextNode(e)),document.body.appendChild(t)%7D,u=function()%7Bo(),t(),n()%7D;return%7Bhighlight:u%7D%7D();e.highlight()%7D)();
 
-## Compressing/minifying
+## Building (brace yourself)
 
-    uglifyjs bookmarklet.js > bookmarklet.min.js
+Compresses, prepends with `javascript:` and URL encodes
+
+    uglifyjs bookmarklet.js | sed -e 's/^/javascript:/' | ruby -r 'open-uri' -e "puts URI::encode(STDIN.read.chomp)" > bookmarklet.min.js
 
     cat bookmarklet.min.js | wc -c
-    921
+    1093
 
 ## Thanks!
 
 * [UglifyJS](https://github.com/mishoo/UglifyJS)  
   Compression/minification for JavaScript
-
-* [Bookmarkleter](http://chris.zarate.org/bookmarkleter)  
-  Used to encode the bookmarklet
 
