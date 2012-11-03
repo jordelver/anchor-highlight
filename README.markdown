@@ -10,5 +10,5 @@ This allows the full URL of the anchor to be easily copied and pasted. Think of 
 
 ## Screenshot
 
-![](https://github.com/jordelver/anchor-highlight/blob/master/screenshot.png)
+![](https://raw.github.com/jordelver/anchor-highlight/master/screenshot.png)
 
